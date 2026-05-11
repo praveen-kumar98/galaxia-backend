@@ -1,7 +1,7 @@
+import { VersioningType } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 
 import { CoreModule } from "./modules/core.module";
-import { VersioningType } from "@nestjs/common";
 
 async function bootstrap() {
   const app = await NestFactory.create(CoreModule);
@@ -10,14 +10,14 @@ async function bootstrap() {
 
   app.enableVersioning({
     type: VersioningType.URI,
-    defaultVersion: '1',
-    prefix: 'v'
-  })
+    defaultVersion: "1",
+    prefix: "v",
+  });
 
   app.enableCors({
     origin: "http://localhost:3000",
     credentials: true,
-  })
+  });
 
   const port = process.env.PORT ?? 4000;
   await app.listen(port);
