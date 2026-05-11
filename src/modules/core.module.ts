@@ -1,11 +1,11 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 
-import appConfig from "../config/app.config";
-import databaseConfig from "../config/db.config";
-import jwtConfig from "../config/jwt.config";
-import mailConfig from "../config/mail.config";
-import { validateEnv } from "../config/env.validation";
+import appConfig from "@/config/app.config";
+import databaseConfig from "@/config/db.config";
+import { validateEnv } from "@/config/env.validation";
+import jwtConfig from "@/config/jwt.config";
+import mailConfig from "@/config/mail.config";
 
 @Module({
   imports: [
@@ -13,7 +13,7 @@ import { validateEnv } from "../config/env.validation";
       isGlobal: true,
       expandVariables: true,
       load: [appConfig, databaseConfig, jwtConfig, mailConfig],
-      validate: validateEnv
+      validate: validateEnv,
     }),
   ],
 })
