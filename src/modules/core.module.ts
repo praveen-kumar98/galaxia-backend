@@ -5,6 +5,7 @@ import appConfig from "../config/app.config";
 import databaseConfig from "../config/db.config";
 import jwtConfig from "../config/jwt.config";
 import mailConfig from "../config/mail.config";
+import { validateEnv } from "../config/env.validation";
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import mailConfig from "../config/mail.config";
       isGlobal: true,
       expandVariables: true,
       load: [appConfig, databaseConfig, jwtConfig, mailConfig],
+      validate: validateEnv
     }),
   ],
 })
